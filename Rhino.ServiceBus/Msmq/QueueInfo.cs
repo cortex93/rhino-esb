@@ -4,7 +4,12 @@ namespace Rhino.ServiceBus.Msmq
 {
 	using System;
 	using System.ComponentModel;
-	using System.Messaging;
+	#if NET45
+using System.Messaging;
+#endif
+#if NETSTANDARD2_0
+using Experimental.System.Messaging;
+#endif
 
 	public class QueueInfo
 	{

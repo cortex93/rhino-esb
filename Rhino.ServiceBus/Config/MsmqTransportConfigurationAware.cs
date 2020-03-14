@@ -4,7 +4,12 @@ using Rhino.ServiceBus.Impl;
 using Rhino.ServiceBus.LoadBalancer;
 using Rhino.ServiceBus.Msmq;
 using Rhino.ServiceBus.Internal;
+#if NET45
 using System.Messaging;
+#endif
+#if NETSTANDARD2_0
+using Experimental.System.Messaging;
+#endif
 using Rhino.ServiceBus.Msmq.TransportActions;
 
 namespace Rhino.ServiceBus.Config

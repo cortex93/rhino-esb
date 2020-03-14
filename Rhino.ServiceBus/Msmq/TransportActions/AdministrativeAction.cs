@@ -1,5 +1,10 @@
 using System;
+#if NET45
 using System.Messaging;
+#endif
+#if NETSTANDARD2_0
+using Experimental.System.Messaging;
+#endif
 using Rhino.ServiceBus.Impl;
 using Rhino.ServiceBus.Internal;
 using MessageType=Rhino.ServiceBus.Transport.MessageType;

@@ -1,7 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+#if NET45
 using System.Messaging;
+#endif
+#if NETSTANDARD2_0
+using Experimental.System.Messaging;
+#endif
 using Common.Logging;
 using Rhino.ServiceBus.DataStructures;
 using Rhino.ServiceBus.Exceptions;

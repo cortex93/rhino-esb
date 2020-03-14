@@ -1,5 +1,10 @@
 using System;
+#if NET45
 using System.Messaging;
+#endif
+#if NETSTANDARD2_0
+using Experimental.System.Messaging;
+#endif
 using System.Net;
 using System.Security.Principal;
 using Rhino.ServiceBus.Exceptions;
@@ -144,11 +149,11 @@ namespace Rhino.ServiceBus.Msmq
             var anonymousLogonName = new SecurityIdentifier(WellKnownSidType.AnonymousSid, null)
                 .Translate(typeof(NTAccount))
                 .ToString();
-
+#if NET45
             queue.SetPermissions(administratorsGroupName, MessageQueueAccessRights.FullControl, AccessControlEntryType.Allow);
             queue.SetPermissions(everyoneGroupName, MessageQueueAccessRights.WriteMessage, AccessControlEntryType.Allow);
             queue.SetPermissions(anonymousLogonName, MessageQueueAccessRights.WriteMessage, AccessControlEntryType.Allow);
-            
+#endif  
             return queue;
         }
         

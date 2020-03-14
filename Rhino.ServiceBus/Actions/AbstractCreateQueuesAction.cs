@@ -1,4 +1,9 @@
-﻿using System.Messaging;
+﻿#if NET45
+using System.Messaging;
+#endif
+#if NETSTANDARD2_0
+using Experimental.System.Messaging;
+#endif
 using Rhino.ServiceBus.Msmq;
 
 namespace Rhino.ServiceBus.Actions
@@ -28,6 +33,7 @@ namespace Rhino.ServiceBus.Actions
         {
             if (!string.IsNullOrEmpty(user))
             {
+#if NET45
                 queue.SetPermissions(user,
                                      MessageQueueAccessRights.DeleteMessage |
                                      MessageQueueAccessRights.DeleteJournalMessage |
@@ -39,6 +45,7 @@ namespace Rhino.ServiceBus.Actions
                                      MessageQueueAccessRights.ReceiveMessage |
                                      MessageQueueAccessRights.WriteMessage,
                                      AccessControlEntryType.Allow);
+#endif
             }
         }
     }

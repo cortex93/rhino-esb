@@ -1,3 +1,4 @@
+#if NET45
 using System;
 using System.IO;
 using Common.Logging;
@@ -202,3 +203,4 @@ namespace Rhino.ServiceBus.Hosting
         }
     }
 }
+#endif

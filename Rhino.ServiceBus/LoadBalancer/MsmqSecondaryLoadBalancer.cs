@@ -1,6 +1,11 @@
 using System;
 using System.Linq;
+#if NET45
 using System.Messaging;
+#endif
+#if NETSTANDARD2_0
+using Experimental.System.Messaging;
+#endif
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Common.Logging;

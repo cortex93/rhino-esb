@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using Rhino.ServiceBus.Impl;
 using Rhino.ServiceBus.Msmq;
 using Rhino.ServiceBus.Internal;
+#if NET45
 using System.Messaging;
+#endif
+#if NETSTANDARD2_0
+using Experimental.System.Messaging;
+#endif
 
 namespace Rhino.ServiceBus.Config
 {
